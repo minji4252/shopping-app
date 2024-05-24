@@ -1,25 +1,33 @@
 import { Route, Routes } from "react-router-dom";
 import ProductListPage from "./pages/ProductListPage";
 import ProductItemPage from "./pages/ProductItemPage";
-import PurchasePage from "./pages/PurchasePage";
-import CreatePage from "./pages/CreatePage";
-import ModifyPage from "./pages/ModifyPage";
-import NotfoundPage from "./pages/NotfoundPage";
+import ProductCreatePage from "./pages/ProductCreatePage";
+import ProductModifyPage from "./pages/ProductModifyPage";
+import ProductPurchasePage from "./pages/ProductPurchasePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import Layout from "./components/common/Layout";
+import CartPage from "./pages/CartPage";
+import Responsive from "./components/common/Responsive";
 
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<ProductListPage />} />
-        <Route path="/product" element={<ProductListPage />} />
-        <Route path="/create" element={<CreatePage />} />
-        <Route path="/product/:productId" element={<ProductItemPage />} />
-        <Route path="/purchase/:productId" element={<PurchasePage />} />
-        <Route path="/modify/:productId" element={<ModifyPage />} />
-        <Route path="*" element={<NotfoundPage />} />
-      </Routes>
-    </Layout>
+    <Responsive>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<ProductListPage />} />
+          <Route path="/product" element={<ProductListPage />} />
+          <Route path="/create" element={<ProductCreatePage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:productId" element={<ProductItemPage />} />
+          <Route
+            path="/purchase/:productId"
+            element={<ProductPurchasePage />}
+          />
+          <Route path="/modify/:productId" element={<ProductModifyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Layout>
+    </Responsive>
   );
 }
 

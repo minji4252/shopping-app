@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
 import { getProductList } from "../api/productListApi";
-import { API_HOST } from "../api/config";
+import { useNavigate } from "react-router-dom";
+import Button from "./common/Button";
 
 const ProductList = () => {
   const navigate = useNavigate();
@@ -29,12 +29,13 @@ const ProductList = () => {
   return (
     <div>
       <h2>상품 목록 보여주기</h2>
+
       <div>
         {productList.map(item => (
           <ul key={item.id}>
             <li
               style={{ cursor: "pointer" }}
-              onClick={() => navigate(`${API_HOST}/${item.id}`)}
+              onClick={() => navigate(`/product/${item.id}`)}
             >
               {item.name}
             </li>

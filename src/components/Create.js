@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createProduct } from "../api/productCreateApi";
-import { API_HOST } from "../api/config";
+import Button from "./common/Button";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -30,7 +30,6 @@ const Create = () => {
     setIsLoading(true);
 
     const response = await createProduct({ name, price, explanation });
-
     if (response) {
       setIsLoading(false);
       setIsModalOpen(true);
@@ -38,14 +37,14 @@ const Create = () => {
   };
 
   const handleMoveListPage = () => {
+    // console.log("상품목록페이지로 이동");
     setIsModalOpen(false);
-    navigate("/product");
+    navigate(`/product`);
   };
 
   if (isLoading) {
-    return <h3>상품을 등록 하는중입니다...</h3>;
+    return <h3>상품을 등록하는 중 입니다...</h3>;
   }
-
   if (isModalOpen) {
     return (
       <div>
@@ -84,7 +83,8 @@ const Create = () => {
           onChange={handleExplanationChange}
         />
         <br />
-        <input type="submit" value="상품 정보 등록하기" />
+        {/* <input type="submit" value="상품 정보 등록하기" /> */}
+        <Button label="상품 정보 등록하기" />
       </form>
     </div>
   );
